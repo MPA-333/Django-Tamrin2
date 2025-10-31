@@ -15,3 +15,10 @@ def departmentView(request):
         "load_media": settings.MEDIA_URL
     }
     return render(request, "introduction/department.html", context)
+
+
+def museumView(request):
+    context = {
+        "load_media": settings.MEDIA_URL
+    }
+    return render(request, "introduction/museum.html", context)
