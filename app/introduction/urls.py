@@ -1,5 +1,5 @@
 from django.urls import path
-from app.introduction.views import introView, historyView, departmentView, museumView, gardenView, visit_wayView
+from app.introduction.views import introView, historyView, departmentView, museumView, gardenView, visit_wayView, date_rule_priceView
 
 urlpatterns = [
     path("", introView, name="intro"),
@@ -7,5 +7,6 @@ urlpatterns = [
     path("department/", departmentView, name="department"),
     path("department/museum/", museumView, name="museum"),
     path("department/garden/", gardenView, name="garden"),
-    path("visit-way", visit_wayView, name="way"),
+    path("visit-way/", visit_wayView, name="way"),
+    path("program-rule/", date_rule_priceView, name="pr"),
 ]

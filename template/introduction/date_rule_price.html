@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+
+{% block title %}بخش های مختلف{% endblock %}
+
+{% block header %}
+    <nav class="navbar">
+        <div>
+            <ul class="navbar__ul">
+                <li><a href="{% url 'home' %}">خانه</a></li>
+                <li><a href="{% url 'intro' %}">صفحه قبلی</a></li>
+            </ul>
+        </div>
+        <div>
+            <p class="navbar__p">برنامه و قوانین باغ</p>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block main %}
+    <h1>اطلاعاتی در مورد هزینه، زمان و قوانین بازدید</h1>
+    <div>
+        {% for item in data %}
+            <h2>{{ item.1 }}</h2>
+            <p>
+                <ul>
+                    <li>ساعت بازدید : {{ item.2 }}</li>
+                    <li>روز بازدید : {{ item.3 }}</li>
+                    <li>قوانین و مقررات : {{ item.4 }}</li>
+                    <li>
+                        <dl>
+                            <dt>بهای بلیت :</dt>
+                            <dd>
+                                {% for price in item.5 %}
+                                    {{ price.group }} : {{ price.price }} تومان<br>
+                                {% empty %}
+                                    داده ای یافت نشد!
+                                {% endfor %}
+                            </dd> 
+                        </dl>
+                    </li> 
+                </ul>
+            </p>
+            <hr>
+        {% empty %}
+            <p>لیست خالی است</p>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
